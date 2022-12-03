@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/Food.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/main.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Ant.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Anthill.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40.5683, 741.996 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 1284.25, 20.5 )
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 2 )
+ant = ExtResource( 3 )
+food = ExtResource( 1 )
+anthill_path = NodePath("Anthill")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -40, 720 )
+scale = Vector2( 0.985992, 0.970355 )
+shape = SubResource( 1 )
+one_way_collision_margin = 2.6
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 2625, 720 )
+scale = Vector2( -1.3833, 0.97472 )
+shape = SubResource( 1 )
+one_way_collision_margin = 2.6
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1284, -21 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1284, 1461 )
+shape = SubResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 64.2261, 36.0442 )
+color = Color( 0.341176, 0.231373, 0.14902, 1 )
+
+[node name="Anthill" parent="." instance=ExtResource( 4 )]
